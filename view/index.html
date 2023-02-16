@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul-Lebo</title>
+</head>
+
+<body>
+    <h1>Registration</h1>
+
+    <form action="" method="post">
+        <label for="">First Name</label>
+        <input type="text">
+        <label for="">Last Name</label>
+        <input type="text">
+        <label for="">Email Address</label>
+        <input type="text">
+        <label for="">Password</label>
+        <input type="password">
+        <button type="submit" onclick="edit()">Submit</button>
+    </form>
+
+
+    <script>
+        function edit(){
+        route.post('/register',bodyParser.json(), (req, res) => {
+    let detail = req.body;
+    console.log(detail);
+    const strQry =
+    `INSERT INTO register
+    SET?;`
+    db.query(strQry, [detail], (err) => {
+        if (err) {
+         console.log(err);
+        }
+        else{
+            res.status(200).json( {msg:"A user record was saved"} )
+        }
+    });
+});
+        }
+    </script>
+</body>
+
+</html>
